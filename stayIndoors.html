@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Stay Indoors</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/methodsForModeling.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['day', 'Infected people',],
+          ['1',  arrayOfValues[0],],
+          ['2',  arrayOfValues[1],],
+          ['3',  arrayOfValues[2],],
+          ['4',  arrayOfValues[3],],
+          ['5',  arrayOfValues[4],],
+          ['6',  arrayOfValues[5],],
+          ['7',  arrayOfValues[6],],
+          ['8',  arrayOfValues[7],],
+          ['9',  arrayOfValues[8],],
+          ['10',  arrayOfValues[9],],
+          ['11',  arrayOfValues[10],],
+          ['12',  arrayOfValues[11],],
+          ['13',  arrayOfValues[12],],
+          ['14',  arrayOfValues[13],],
+          ['15',  arrayOfValues[14],],
+          ['16',  arrayOfValues[15],],
+          ['17',  arrayOfValues[16],],
+          ['18',  arrayOfValues[17],],
+          ['19',  arrayOfValues[18],],
+          ['20',  arrayOfValues[19],],
+          ['21',  arrayOfValues[20],],
+          ['22',  arrayOfValues[21],],
+          ['23',  arrayOfValues[22],],
+          ['24',  arrayOfValues[23],],
+          ['25',  arrayOfValues[24],],
+          ['26',  arrayOfValues[25],],
+          ['27',  arrayOfValues[26],],
+          ['28',  arrayOfValues[27],],
+          ['29',  arrayOfValues[28],],
+          ['30',  arrayOfValues[29],],
+          ['31',  arrayOfValues[30],],
+          ['32',  arrayOfValues[31],],
+          ['33',  arrayOfValues[32],],
+          ['34',  arrayOfValues[33],],
+          ['35',  arrayOfValues[34],],
+          ['36',  arrayOfValues[35],],
+          ['37',  arrayOfValues[36],],
+          ['38',  arrayOfValues[37],],
+          ['39',  arrayOfValues[38],],
+          ['40',  arrayOfValues[39],],
+          ['41',  arrayOfValues[40],],
+          ['42',  arrayOfValues[41],],
+          ['43',  arrayOfValues[42],],
+          ['44',  arrayOfValues[43],],
+          ['45',  arrayOfValues[44],],
+          ['46',  arrayOfValues[45],],
+          ['47',  arrayOfValues[46],],
+          ['48',  arrayOfValues[47],],
+          ['49',  arrayOfValues[48],],
+          ['50',  arrayOfValues[49],],
+          ['51',  arrayOfValues[50],],
+          ['52',  arrayOfValues[51],],
+          ['53',  arrayOfValues[52],],
+          ['54',  arrayOfValues[53],],
+          ['55',  arrayOfValues[54],],
+          ['56',  arrayOfValues[55],],
+          ['57',  arrayOfValues[56],],
+          ['58',  arrayOfValues[57],],
+          ['59',  arrayOfValues[58],],
+          ['60',  arrayOfValues[59],],
+          ['61',  arrayOfValues[60],],
+          ['62',  arrayOfValues[61],],
+          ['63',  arrayOfValues[62],],
+          ['64',  arrayOfValues[63],],
+          ['65',  arrayOfValues[64],],
+          ['66',  arrayOfValues[65],],
+          ['67',  arrayOfValues[66],],
+          ['68',  arrayOfValues[67],],
+          ['69',  arrayOfValues[68],],
+          ['70',  arrayOfValues[69],],
+          ['71',  arrayOfValues[70],],
+          ['72',  arrayOfValues[71],],
+          ['73',  arrayOfValues[72],],
+          ['74',  arrayOfValues[73],],
+          ['75',  arrayOfValues[74],],
+          ['76',  arrayOfValues[75],],
+          ['77',  arrayOfValues[76],],
+          ['78',  arrayOfValues[77],],
+          ['79',  arrayOfValues[78],],
+          ['80',  arrayOfValues[79],],
+          ['81',  arrayOfValues[80],],
+          ['82',  arrayOfValues[81],],
+          ['83',  arrayOfValues[82],],
+          ['84',  arrayOfValues[83],],
+          ['85',  arrayOfValues[84],],
+          ['86',  arrayOfValues[85],],
+          ['87',  arrayOfValues[86],],
+          ['88',  arrayOfValues[87],],
+          ['89',  arrayOfValues[88],],
+          ['90',  arrayOfValues[89],],
+          ['91',  arrayOfValues[90],],
+          ['92',  arrayOfValues[91],],
+          ['93',  arrayOfValues[92],],
+          ['94',  arrayOfValues[93],],
+          ['95',  arrayOfValues[94],],
+          ['96',  arrayOfValues[95],],
+          ['97',  arrayOfValues[96],],
+          ['98',  arrayOfValues[97],],
+          ['99',  arrayOfValues[98],],
+          ['100',  arrayOfValues[99],],
+          ['101',  arrayOfValues[100],],
+          ['102',  arrayOfValues[101],],
+          ['103',  arrayOfValues[102],],
+          ['104',  arrayOfValues[103],],
+          ['105',  arrayOfValues[104],],
+          ['106',  arrayOfValues[105],],
+          ['107',  arrayOfValues[106],],
+          ['108',  arrayOfValues[107],],
+          ['109',  arrayOfValues[108],],
+          ['110',  arrayOfValues[109],],
+          ['111',  arrayOfValues[110],],
+          ['112',  arrayOfValues[111],],
+          ['113',  arrayOfValues[112],],
+          ['114',  arrayOfValues[113],],
+          ['115',  arrayOfValues[114],],
+          ['116',  arrayOfValues[115],],
+          ['117',  arrayOfValues[116],],
+          ['118',  arrayOfValues[117],],
+          ['119',  arrayOfValues[118],],
+          ['120',  arrayOfValues[119],],
+          ['121',  arrayOfValues[120],],
+          ['122',  arrayOfValues[121],],
+          ['123',  arrayOfValues[122],],
+          ['124',  arrayOfValues[123],],
+          ['125',  arrayOfValues[124],],
+          ['126',  arrayOfValues[125],],
+          ['127',  arrayOfValues[126],],
+          ['128',  arrayOfValues[127],],
+          ['129',  arrayOfValues[128],],
+          ['130',  arrayOfValues[129],],
+          ['131',  arrayOfValues[130],],
+          ['132',  arrayOfValues[131],],
+          ['133',  arrayOfValues[132],],
+          ['134',  arrayOfValues[133],],
+          ['135',  arrayOfValues[134],],
+          ['136',  arrayOfValues[135],],
+          ['137',  arrayOfValues[136],],
+          ['138',  arrayOfValues[137],],
+          ['139',  arrayOfValues[138],],
+          ['140',  arrayOfValues[139],],
+          ['141',  arrayOfValues[140],],
+          ['142',  arrayOfValues[141],],
+          ['143',  arrayOfValues[142],],
+          ['144',  arrayOfValues[143],],
+          ['145',  arrayOfValues[144],],
+          ['146',  arrayOfValues[145],],
+          ['147',  arrayOfValues[146],],
+          ['148',  arrayOfValues[147],],
+          ['149',  arrayOfValues[148],],
+          ['150',  arrayOfValues[149],],
+          ['151',  arrayOfValues[150],],
+          ['152',  arrayOfValues[151],],
+          ['153',  arrayOfValues[152],],
+          ['154',  arrayOfValues[153],],
+          ['155',  arrayOfValues[154],],
+          ['156',  arrayOfValues[155],],
+          ['157',  arrayOfValues[156],],
+          ['158',  arrayOfValues[157],],
+          ['159',  arrayOfValues[158],],
+          ['160',  arrayOfValues[159],],
+          ['161',  arrayOfValues[160],],
+          ['162',  arrayOfValues[161],],
+          ['163',  arrayOfValues[162],],
+          ['164',  arrayOfValues[163],],
+          ['165',  arrayOfValues[164],],
+          ['166',  arrayOfValues[165],],
+          ['167',  arrayOfValues[166],],
+          ['168',  arrayOfValues[167],],
+          ['169',  arrayOfValues[168],],
+          ['170',  arrayOfValues[169],],
+          ['171',  arrayOfValues[170],],
+          ['172',  arrayOfValues[171],],
+          ['173',  arrayOfValues[172],],
+          ['174',  arrayOfValues[173],],
+          ['175',  arrayOfValues[174],],
+          ['176',  arrayOfValues[175],],
+          ['177',  arrayOfValues[176],],
+          ['178',  arrayOfValues[177],],
+          ['179',  arrayOfValues[178],],
+          ['180',  arrayOfValues[179],],
+          ['181',  arrayOfValues[180],],
+          ['182',  arrayOfValues[181],],
+          ['183',  arrayOfValues[182],],
+          ['184',  arrayOfValues[183],],
+          ['185',  arrayOfValues[184],],
+          ['186',  arrayOfValues[185],],
+          ['187',  arrayOfValues[186],],
+          ['188',  arrayOfValues[187],],
+          ['189',  arrayOfValues[188],],
+          ['190',  arrayOfValues[189],],
+          ['191',  arrayOfValues[190],],
+          ['192',  arrayOfValues[191],],
+          ['193',  arrayOfValues[192],],
+          ['194',  arrayOfValues[193],],
+          ['195',  arrayOfValues[194],],
+          ['196',  arrayOfValues[195],],
+          ['197',  arrayOfValues[196],],
+          ['198',  arrayOfValues[197],],
+          ['199',  arrayOfValues[198],],
+          ['200',  arrayOfValues[199],],
+          ['201',  arrayOfValues[200],],
+          ['202',  arrayOfValues[201],],
+          ['203',  arrayOfValues[202],],
+          ['204',  arrayOfValues[203],],
+          ['205',  arrayOfValues[204],],
+          ['206',  arrayOfValues[205],],
+          ['207',  arrayOfValues[206],],
+          ['208',  arrayOfValues[207],],
+          ['209',  arrayOfValues[208],],
+          ['210',  arrayOfValues[209],],
+          ['211',  arrayOfValues[210],],
+          ['212',  arrayOfValues[211],],
+          ['213',  arrayOfValues[212],],
+          ['214',  arrayOfValues[213],],
+          ['215',  arrayOfValues[214],],
+          ['216',  arrayOfValues[215],],
+          ['217',  arrayOfValues[216],],
+          ['218',  arrayOfValues[217],],
+          ['219',  arrayOfValues[218],],
+          ['220',  arrayOfValues[219],],
+          ['221',  arrayOfValues[220],],
+          ['222',  arrayOfValues[221],],
+          ['223',  arrayOfValues[222],],
+          ['224',  arrayOfValues[223],],
+          ['225',  arrayOfValues[224],],
+          ['226',  arrayOfValues[225],],
+          ['227',  arrayOfValues[226],],
+          ['228',  arrayOfValues[227],],
+          ['229',  arrayOfValues[228],],
+          ['230',  arrayOfValues[229],],
+          ['231',  arrayOfValues[230],],
+          ['232',  arrayOfValues[231],],
+          ['233',  arrayOfValues[232],],
+          ['234',  arrayOfValues[233],],
+          ['235',  arrayOfValues[234],],
+          ['236',  arrayOfValues[235],],
+          ['237',  arrayOfValues[236],],
+          ['238',  arrayOfValues[237],],
+          ['239',  arrayOfValues[238],],
+          ['240',  arrayOfValues[239],],
+          ['241',  arrayOfValues[240],],
+          ['242',  arrayOfValues[241],],
+          ['243',  arrayOfValues[242],],
+          ['244',  arrayOfValues[243],],
+          ['245',  arrayOfValues[244],],
+          ['246',  arrayOfValues[245],],
+          ['247',  arrayOfValues[246],],
+          ['248',  arrayOfValues[247],],
+          ['249',  arrayOfValues[248],],
+          ['250',  arrayOfValues[249],],
+          ['251',  arrayOfValues[250],],
+          ['252',  arrayOfValues[251],],
+          ['253',  arrayOfValues[252],],
+          ['254',  arrayOfValues[253],],
+          ['255',  arrayOfValues[254],],
+          ['256',  arrayOfValues[255],],
+          ['257',  arrayOfValues[256],],
+          ['258',  arrayOfValues[257],],
+          ['259',  arrayOfValues[258],],
+          ['260',  arrayOfValues[259],],
+          ['261',  arrayOfValues[260],],
+          ['262',  arrayOfValues[261],],
+          ['263',  arrayOfValues[262],],
+          ['264',  arrayOfValues[263],],
+          ['265',  arrayOfValues[264],],
+          ['266',  arrayOfValues[265],],
+          ['267',  arrayOfValues[266],],
+          ['268',  arrayOfValues[267],],
+          ['269',  arrayOfValues[268],],
+          ['270',  arrayOfValues[269],],
+          ['271',  arrayOfValues[270],],
+          ['272',  arrayOfValues[271],],
+          ['273',  arrayOfValues[272],],
+          ['274',  arrayOfValues[273],],
+          ['275',  arrayOfValues[274],],
+          ['276',  arrayOfValues[275],],
+          ['277',  arrayOfValues[276],],
+          ['278',  arrayOfValues[277],],
+          ['279',  arrayOfValues[278],],
+          ['280',  arrayOfValues[279],],
+          ['281',  arrayOfValues[280],],
+          ['282',  arrayOfValues[281],],
+          ['283',  arrayOfValues[282],],
+          ['284',  arrayOfValues[283],],
+          ['285',  arrayOfValues[284],],
+          ['286',  arrayOfValues[285],],
+          ['287',  arrayOfValues[286],],
+          ['288',  arrayOfValues[287],],
+          ['289',  arrayOfValues[288],],
+          ['290',  arrayOfValues[289],],
+          ['291',  arrayOfValues[290],],
+          ['292',  arrayOfValues[291],],
+          ['293',  arrayOfValues[292],],
+          ['294',  arrayOfValues[293],],
+          ['295',  arrayOfValues[294],],
+          ['296',  arrayOfValues[295],],
+          ['297',  arrayOfValues[296],],
+          ['298',  arrayOfValues[297],],
+          ['299',  arrayOfValues[298],],
+          ['300',  arrayOfValues[299],],
+          
+        ]);
+          
+        var options = {
+          title: 'Coronavirus model',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+        
+      }
+      
+    </script>
+    
+</head>
+
+<body>
+
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="stayIndoors.html">Stay Indoors</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria- expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <div class="row">
+    <div class="col-9">
+      <div id="curve_chart" style="width: 1100px; height: 600px"></div>
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-3">
+      <button type="button" class="btn btn-primary btn-lg">Social Distancing</button>
+    </div>
+    <div class="col-3">
+         <button type="button" onclick="changeBeta()" class="btn btn-primary btn-lg">No Social Distancing</button>
+     </div>
+  </div>
+  <div style="height: 45px;">
+      
+  </div>
+  <div style="height: 45px;">
+        <div class="h-auto d-inline-block" style="width: 195px"> </div>
+        <div class="h-auto d-inline-block" style="width: 120px;"></div>
+        <h1 class="h-auto d-inline-block" style="width: 600px;">Equations for Modeling</h1>
+  </div>
+  <div style="height: 10px;">
+      
+  </div>
+  <div class="row">
+     <div class="col-4">
+         
+     </div>
+     <div class="col-6">
+         <img src="pictures/first.png" class="img-fluid" alt="Responsive image">
+     </div>
+     <div class="col-2">
+         
+     </div>
+  </div>
+  <div style="height: 7px;">
+      
+  </div>
+  <div class="row">
+     <div class="col-4">
+         
+     </div>
+     <div class="col-6">
+         <img src="pictures/second.png" class="img-fluid" alt="Responsive image">
+     </div>
+     <div class="col-2">
+         
+     </div>
+  </div>
+  
+  <div style="height: 45px;">
+        <div class="h-auto d-inline-block" style="width: 313px"> </div>
+        <div class="h-auto d-inline-block" style="width: 120px;"></div>
+        <h1 class="h-auto d-inline-block" style="width: 400px;">Evaluation</h1>
+  </div>
+  <div style="height: 10px;">
+      
+  </div>
+  
+  <div style="height: 45px;">
+        <div class="h-auto d-inline-block" style="width: 75px"> </div>
+        <p class="h-auto d-inline-block text-center" style="width: 950px;">As you can see above when people are socially distancing the amount of people that are possibly infected is reduced by over half the people. Although my model may not be 100% accurate one thing is certain when looking at these graphs: Socially distancing will help reduce the ammount of cases in the Atlanta metropolitan area.</p>
+  </div>
+</div>   
+</body>
+</html>

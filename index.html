@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <script type="text/javascript" src="js/motivatequote.js"></script>
+    </head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div><label id="cost">100</label><button type="button" onclick="clickMe()">Click Me!</button></div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-title button is-primary">Days from the day we had been in quarantine.</div>
+                </div>
+                <div class="card-content">
+                    <table class="table is-striped">
+                        <tr>
+                            <td><div class="column label">Quarantine started on</div></td>
+                            <td><div class="column label">3/1/2020</div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="column label">Days in Quarantine</div></td>
+                            <td><div class="column label" id="days"></div></td>
+                        </tr>
+                    </table>
+                    <p class="subtitle  is-light" id="quote"></p>
+                    <p class="subtitle  has-text-italic" id="quotefooter"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+    
+<script>
+    function clickMe(){
+        var money = document.getElementById("cost");
+        money.textContent = parseInt(money.textContent) + 100;
+    }
+    
+    document.getElementById("days").innerHTML = Math.trunc(
+                                                    (new Date(Date.now()) - 
+                                                    new Date('3/1/2020'))
+                                                        /(24*3600*1000));
+    var str = quotes[whichquote];
+    var qstr = str.split("<i>")[0];
+    var fstr = str.split("<i>")[1].split("</i>")[0];
+    document.getElementById("quote").innerHTML = qstr;
+    document.getElementById("quotefooter").innerHTML = fstr;
+</script>
+
+</html>
