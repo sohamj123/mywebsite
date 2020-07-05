@@ -1,78 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <title>Stay Indoors</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
-  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-  <style>
-      /* Image Designing Propoerties */
-      .thumb {
-          height: 750px;
-          border: 1px solid #000;
-          margin: 10px 5px 0 0;
-      }
-  </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Stay Indoors</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <style>
+        /* Image Designing Propoerties */
+        .thumb {
+            height: 750px;
+            border: 1px solid #000;
+            margin: 10px 5px 0 0;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-           <a class="navbar-brand" href="NBATAKES.html">home</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="NBATAKES.html">home</a>
         </nav>
-       <div class="container">
+        <div class="container">
             <h1 style="text-align: center;">Title</h1>
-       </div>
+        </div>
+        
+        <form action="insertpost.php" method="POST">
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-      
-              </div>
-              <input type="text" class="form-control" placeholder="Title" aria-label="Username" aria-describedby="basic-addon1">
+                <div class="input-group-prepend">
+
+                </div>
+                <input type="text" name="title" class="form-control" placeholder="Title" aria-label="Username"
+                    aria-describedby="basic-addon1" >
             </div>
-           <button type="button" class="btn btn-success btn-lg btn-block" id="replyb">add picture</button>
-           <div class="container" id="replyText" style="display: none">
+            <button type="button" class="btn btn-success btn-lg btn-block" id="replyb">add picture</button>
+            <div class="container" id="replyText" style="display: none">
                 <input type='file' />
-                <br/>
+                <br />
                 <img id="myImg" src="#" alt="your image" class="thumb">
-           </div>
-           <div style="height: 20px;">
-           </div>
-           <div class="input-group input-group-lg">
-              <div class="input-group-prepend">
-          
-          </div>
-          <input type="text" class="form-control" placeholder="caption" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
-        <div style="height: 20px;">
-        </div>
-        <a href="post.html"> 
-            <button type="button" class="btn btn-success btn-lg btn-block">Post</button>
-         </a>
+            </div>
+            <div style="height: 20px;">
+            </div>
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+
+                </div>
+                <input type="text" class="form-control" placeholder="caption" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <div style="height: 20px;">
+            </div>
+            <button type="button" class="btn btn-success btn-lg btn-block">Post</button> 
+            <!--a href="post.html">
+                <button type="button" class="btn btn-success btn-lg btn-block">Post</button>
+            </a-->
+        </form>
     </div>
 </body>
-    
-    <script type="text/javascript" src="script/website.js"></script>
-    <script type="text/javascript">
-        /* The uploader form */
-        $(function () {
-            $(":file").change(function () {
-                if (this.files && this.files[0]) {
-                    var reader = new FileReader();
 
-                    reader.onload = imageIsLoaded;
-                    reader.readAsDataURL(this.files[0]);
-                }
-            });
+<script type="text/javascript" src="script/website.js"></script>
+<script type="text/javascript">
+    /* The uploader form */
+    $(function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }
         });
+    });
 
-        function imageIsLoaded(e) {
-            $('#myImg').attr('src', e.target.result);
-            $('#yourImage').attr('src', e.target.result);
-        };
+    function imageIsLoaded(e) {
+        $('#myImg').attr('src', e.target.result);
+        $('#yourImage').attr('src', e.target.result);
+    };
 
-    </script>
+</script>
+
 </html>
