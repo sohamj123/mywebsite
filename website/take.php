@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 </head>
 
+
+
 <?php
 session_start();
 
@@ -60,7 +62,8 @@ $result = $conn->query($sql);
                                 </div>
                             </div>
                         </div>
-                    <?php }
+                    <?php 
+                    }
                     $conn->close();
                     ?>
                 </div>
