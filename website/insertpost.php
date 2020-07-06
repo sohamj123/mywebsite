@@ -1,5 +1,7 @@
 <?php
-$servername = "localhost";
+session_start();
+
+$servername = "p:localhost";
 $username = "root";
 $password = "";
 $dbname = "nbatakes";
@@ -16,7 +18,8 @@ $sql = sprintf('INSERT INTO post (title, take,dt) VALUES ("%s", "%s", "%s")', $_
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully. " . date_default_timezone_get() ;
-  header("Location: take.html");
+  $_SESSION['id'] = $conn->insert_id;
+  header(sprintf("Location: take.php?postid=%s",$conn->insert_id));
   exit();
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
