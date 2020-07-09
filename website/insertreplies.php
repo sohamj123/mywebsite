@@ -14,9 +14,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = sprintf('INSERT INTO post (title, take,dt) VALUES ("%s", "%s", "%s")'
-          , $conn->real_escape_string($_POST["title"])
-          , $conn->real_escape_string($_POST["take"]) 
+$sql = sprintf('INSERT INTO replies (postid,reply, dt) VALUES (%d, "%s","%s")'
+          , $_POST["postid"]
+          , $conn->real_escape_string($_POST["reply2"]) 
           , date("Y-m-d H:i:s") );
 
 

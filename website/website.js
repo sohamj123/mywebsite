@@ -15,4 +15,8 @@ $('#reply').keypress(function(event){
 function newPerson() {
     $('#wrapper').append('<div class="item"><p>'+$('#reply').val()+'</p></div>');
     $('#reply').val("");
+    var reply = <?php insert_reply($_GET['postid'],$('#reply').val()); ?>
+    
+    
 }
+

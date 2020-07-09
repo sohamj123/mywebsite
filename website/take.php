@@ -13,7 +13,30 @@
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 </head>
 
+<?php
+function insert_reply() {
+    $servername = "p:localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "nbatakes";
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $postid = $_POST['postid'];
+    $reply = $_POST['reply'];
+    date_default_timezone_set('America/New_York');
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    }
 
+    $sql = sprintf('INSERT INTO replies (postid,reply, dt) VALUES (%d, "%s","%s")'
+            , $postid
+            , $conn->real_escape_string($reply) 
+            , date("Y-m-d H:i:s") );
+    $conn->close();
+}
+
+?>
 
 <?php
 session_start();
@@ -25,6 +48,7 @@ $dbname = "nbatakes";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+
 date_default_timezone_set('America/New_York');
 // Check connection
 if ($conn->connect_error) {
@@ -33,6 +57,10 @@ if ($conn->connect_error) {
 
 $sql = sprintf('SELECT title, take FROM post where postid = %d;', $_GET['postid']);
 $result = $conn->query($sql);
+
+$sql2 = sprintf('SELECT reply FROM replies where postid = %d;', $_GET['postid']);
+$result2 = $conn->query($sql2) or die($conn->error);
+
 #echo $sql;
 #echo $result->num_rows;
 ?>
@@ -64,12 +92,24 @@ $result = $conn->query($sql);
                         </div>
                     <?php 
                     }
-                    $conn->close();
+                    
                     ?>
                 </div>
             </div>
-            <div id="wrapper">
-            </div>
+            
+                <?php
+                while ($row = $result2->fetch_assoc()) {
+                ?>
+                    <div class="card">
+                    <div class="card-header" id="wrapper">
+                        <p class="card-text"><?php echo $row["reply"] ?></p>
+                    </div>
+                    <?php 
+                        }
+                        $conn->close();
+                    ?>
+                    </div>
+            
         </div>
         <div class="fixed-bottom">
             <div class="container">
@@ -91,6 +131,47 @@ $result = $conn->query($sql);
             </div>
         </div>
 </body>
-<script type="text/javascript" src="script/website.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+});
+
+$('#replyb').click(function(){
+       $(this).next('#replyText').toggle();
+});
+
+$('#reply').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        newPerson();
+    }
+});
+
+function newPerson() {
+    $('#wrapper').append('<div class="item"><p>'+$('#reply').val()+'</p></div>');
+    $.ajax({
+        url : "insertreplies.php",
+        type : "POST",
+        data : { postid:  getUrlParameter('postid'), reply2: $('#reply').val()},
+        dataType: "json"
+    });
+    $('#reply').val("");
+}
+
+function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+</script>
 
 </html>
