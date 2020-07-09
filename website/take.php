@@ -10,15 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <?php
 function insert_reply() {
-    $servername = "p:localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "nbatakes";
+    $ini = parse_ini_file('app.ini');
+    $servername = $ini["servername"];
+    $username = $ini["username"];
+    $password = $ini["password"];
+    $dbname = $ini["dbname"];
+    
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     $postid = $_POST['postid'];
@@ -41,10 +43,12 @@ function insert_reply() {
 <?php
 session_start();
 
-$servername = "p:localhost";
-$username = "root";
-$password = "";
-$dbname = "nbatakes";
+$ini = parse_ini_file('app.ini');
+$servername = $ini["servername"];
+$username = $ini["username"];
+$password = $ini["password"];
+$dbname = $ini["dbname"];
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -78,6 +82,13 @@ $result2 = $conn->query($sql2) or die($conn->error);
                     ?>
                         <h5 class="card-title"><?php echo $row["title"] ?></h5>
                         <p class="card-text"><?php echo $row["take"] ?></p>
+                        <div class="">
+                            <button type="button" class="btn btn-light">
+                                <span class=""><i class="fa fa-heart" style="color:#FF0000;"></i></span>
+                                <span id="countlikes">12</span>
+                            </button>
+
+                        </div>
                         <div class="container">
                             <div class="replybutton btn4 like">
                                 <span class="btn reply" id="replyb">Reply</span>
@@ -91,17 +102,15 @@ $result2 = $conn->query($sql2) or die($conn->error);
                             </div>
                         </div>
                     <?php 
-                    }
-                    
+                    }  
                     ?>
                 </div>
             </div>
-            
+                <div class="card" id="wrapper">
                 <?php
                 while ($row = $result2->fetch_assoc()) {
                 ?>
-                    <div class="card">
-                    <div class="card-header" id="wrapper">
+                    <div class="card-header" >
                         <p class="card-text"><?php echo $row["reply"] ?></p>
                     </div>
                     <?php 
@@ -147,7 +156,7 @@ $('#reply').keypress(function(event){
 });
 
 function newPerson() {
-    $('#wrapper').append('<div class="item"><p>'+$('#reply').val()+'</p></div>');
+    $('#wrapper').append('<div class="card"><div class="card-header"><p class="card-text" id="wrapper">'+$('#reply').val()+'</p></div></div>');
     $.ajax({
         url : "insertreplies.php",
         type : "POST",

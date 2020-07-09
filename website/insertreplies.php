@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-$servername = "p:localhost";
-$username = "root";
-$password = "";
-$dbname = "nbatakes";
+$ini = parse_ini_file('app.ini');
+$servername = $ini["servername"];
+$username = $ini["username"];
+$password = $ini["password"];
+$dbname = $ini["dbname"];
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
