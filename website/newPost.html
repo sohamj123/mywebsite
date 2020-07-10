@@ -10,13 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         /* Image Designing Propoerties */
         .thumb {
-            height: 750px;
-            border: 1px solid #000;
-            margin: 10px 5px 0 0;
+            height: 240px;
+            width: 260px;
+
+        }
+
+        .image-upload>input {
+            display: none;
         }
     </style>
 </head>
@@ -29,33 +33,37 @@
         <div class="container">
             <h1 style="text-align: center;">Title</h1>
         </div>
-        
+
         <form action="insertpost.php" method="POST">
             <div class="input-group mb-3">
-                <div class="input-group-prepend">
-
-                </div>
+                <div class="input-group-prepend"></div>
                 <input type="text" name="title" class="form-control" placeholder="Title" aria-label="Username"
-                    aria-describedby="basic-addon1" >
+                    aria-describedby="basic-addon1">
             </div>
-            <button type="button" class="btn btn-success btn-lg btn-block" id="replyb">add picture</button>
-            <div class="container" id="replyText" style="display: none">
-                <input type='file' />
-                <br />
-                <img id="myImg" src="#" alt="your image" class="thumb">
-            </div>
-            <div style="height: 20px;">
-            </div>
-            <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
+            <!--button type="button" class="btn btn-success btn-lg btn-block" id="btn_uploadfile" value="Upload"
+                onclick="uploadFile();">Upload</button-->
+            <div class="row">
+                <div class='col-3'>
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img src="pictures/placeholder.jpg" id='yourImage' class='thumb' />
+                        </label>
+
+                        <input id="file-input" type="file" />
+                    </div>
 
                 </div>
-                <input type="text" class="form-control" placeholder="caption" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-lg">
+                <div class='col-9'>
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend"></div>
+                        <textarea type="text" rows="6" class="form-control" placeholder="caption" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-lg"></textarea>
+                    </div>
+
+                </div>
             </div>
-            <div style="height: 20px;">
-            </div>
-            <button type="button" class="btn btn-success btn-lg btn-block">Post</button> 
+
+            <button type="button" class="btn btn-success btn-lg btn-block">Post</button>
             <!--a href="post.html">
                 <button type="button" class="btn btn-success btn-lg btn-block">Post</button>
             </a-->
@@ -64,13 +72,13 @@
 </body>
 
 <script type="text/javascript" src="script/website.js"></script>
+
 <script type="text/javascript">
     /* The uploader form */
     $(function () {
         $(":file").change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
-
                 reader.onload = imageIsLoaded;
                 reader.readAsDataURL(this.files[0]);
             }
@@ -78,10 +86,42 @@
     });
 
     function imageIsLoaded(e) {
-        $('#myImg').attr('src', e.target.result);
+        $('#file-input').attr('src', e.target.result);
         $('#yourImage').attr('src', e.target.result);
+        uploadFile();
     };
 
+    // Upload file
+    function uploadFile() {
+        var files = document.getElementById("file-input").files;
+
+        if (files.length > 0) {
+            var formData = new FormData();
+            formData.append("file", files[0]);
+            var xhttp = new XMLHttpRequest();
+
+            // Set POST method and ajax file path
+            xhttp.open("POST", "uploadpic2.php", true);
+
+            // call on request changes state
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText;
+                    if (response == 1) {
+                        //alert("Upload successfully.");
+                    } else {
+                        alert("File not uploaded: " + response);
+                    }
+                }
+            };
+
+            // Send request with data
+            xhttp.send(formData);
+
+        } else {
+            alert("Please select a file");
+        }
+    }
 </script>
 
 </html>

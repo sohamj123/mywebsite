@@ -42,6 +42,8 @@ $result = $conn->query($sql);
       <a class="navbar-brand" href="NBATAKES.php">home</a>
     </nav>
     <div class="container">
+    <img src="pictures/basketball.png" style="height:100px; width: 100px" class="card-img-top" alt="...">
+                  
       <?php
       while ($row = $result->fetch_assoc()) {
 
