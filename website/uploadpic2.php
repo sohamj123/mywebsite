@@ -47,7 +47,7 @@ try {
         throw new RuntimeException('Invalid file format.');
     }
     */
-    $ext='.jpg';
+    $ext='jpg';
     
 
     // You should name it uniquely.
