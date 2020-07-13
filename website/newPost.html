@@ -17,6 +17,7 @@
             height: 240px;
             width: 260px;
         }
+
         .image-upload>input {
             display: none;
         }
@@ -38,29 +39,38 @@
                 <input type="text" name="title" class="form-control" placeholder="Title" aria-label="Username"
                     aria-describedby="basic-addon1">
             </div>
+            <div class="row">
+                <div class='col-3'>
+                    <div class="image-upload">
+                            <img src="pictures/placeholder.jpg" id='yourImage' class='thumb' style="display: none" />
+                        <input id="file-input" type="file" />
+                    </div>
+                </div>
+            </div>
+            <br>
             <!--button type="button" class="btn btn-success btn-lg btn-block" id="btn_uploadfile" value="Upload"
                 onclick="uploadFile();">Upload</button-->
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend"></div>
+                <textarea type="text" rows="6" class="form-control" placeholder="caption"
+                    aria-label="Sizing example input" name="take" aria-describedby="inputGroup-sizing-lg"></textarea>
+            </div>
+
+            <br>
             <div class="row">
                 <div class='col-3'>
                     <div class="image-upload">
                         <label for="file-input">
-                            <img src="pictures/placeholder.jpg" id='yourImage' class='thumb' />
+                            <span id="toggle" class="" ><i class="fa fa-upload">
+
+                            </i></span>
                         </label>
                         <input id="file-input" type="file" />
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class='col-9'>
-                    <div class="input-group input-group-lg">
-                        <div class="input-group-prepend"></div>
-                        <textarea type="text" rows="6" class="form-control" placeholder="caption" aria-label="Sizing example input"
-                            name="take" aria-describedby="inputGroup-sizing-lg"></textarea>
-                    </div>
-
-                </div>
-            </div>
-            <button type="submit"  class="btn btn-success btn-lg btn-block">Post</button>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Post</button>
             <br>
             <br>
             <input type="hidden" id="picname" name="picname" value="">
@@ -71,6 +81,7 @@
 <script type="text/javascript" src="script/website.js"></script>
 
 <script type="text/javascript">
+    
     /* The uploader form */
     $(function () {
         $(":file").change(function () {
@@ -86,6 +97,8 @@
         $('#file-input').attr('src', e.target.result);
         $('#yourImage').attr('src', e.target.result);
         uploadFile();
+        
+            $('#yourImage').show();
     };
 
     // Upload file
