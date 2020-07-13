@@ -53,17 +53,18 @@ try {
     // You should name it uniquely.
     // DO NOT USE $_FILES['upfile']['name'] WITHOUT ANY VALIDATION !!
     // On this example, obtain safe unique name from its binary data.
+    $unique_name = uniqid();
     if (!move_uploaded_file(
         $_FILES['file']['tmp_name'],
         sprintf('./uploadedpic/%s.%s',
-            sha1_file($_FILES['file']['tmp_name']),
+            $unique_name,
             $ext
         )
     )) {
         throw new RuntimeException('Failed to move uploaded file.');
     }
 
-    echo '1';
+    echo $unique_name.'.'.$ext;
 
 } catch (RuntimeException $e) {
 

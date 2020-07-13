@@ -14,13 +14,14 @@
 </head>
 
 <?php
-function insert_reply() {
+function insert_reply()
+{
     $ini = parse_ini_file('app.ini');
     $servername = $ini["servername"];
     $username = $ini["username"];
     $password = $ini["password"];
     $dbname = $ini["dbname"];
-    
+
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     $postid = $_POST['postid'];
@@ -28,16 +29,17 @@ function insert_reply() {
     date_default_timezone_set('America/New_York');
     // Check connection
     if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+        die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = sprintf('INSERT INTO replies (postid,reply, dt) VALUES (%d, "%s","%s")'
-            , $postid
-            , $conn->real_escape_string($reply) 
-            , date("Y-m-d H:i:s") );
+    $sql = sprintf(
+        'INSERT INTO replies (postid,reply, dt) VALUES (%d, "%s","%s")',
+        $postid,
+        $conn->real_escape_string($reply),
+        date("Y-m-d H:i:s")
+    );
     $conn->close();
 }
-
 ?>
 
 <?php
@@ -59,10 +61,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = sprintf('SELECT title, take FROM post where postid = %d;', $_GET['postid']);
+$sql = sprintf('SELECT postid, title, take,likes,dislikes,picname FROM post where postid = %d;', $_GET['postid']);
 $result = $conn->query($sql);
 
-$sql2 = sprintf('SELECT reply FROM replies where postid = %d;', $_GET['postid']);
+$sql2 = sprintf('SELECT replyid, reply,likes,dislikes FROM replies where postid = %d;', $_GET['postid']);
 $result2 = $conn->query($sql2) or die($conn->error);
 
 #echo $sql;
@@ -80,19 +82,30 @@ $result2 = $conn->query($sql2) or die($conn->error);
                     <?php
                     while ($row = $result->fetch_assoc()) {
                     ?>
+                    
                         <h5 class="card-title"><?php echo $row["title"] ?></h5>
+                        <?php
+                        if ($row['picname'] != NULL) {
+                        ?>
+                            <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;"/>
+                        <?php
+                        }
+                        ?>
                         <p class="card-text"><?php echo $row["take"] ?></p>
                         <div class="">
-                            <button type="button" class="btn btn-light">
-                                <span class=""><i class="fa fa-heart" style="color:#FF0000;"></i></span>
-                                <span id="countlikes">12</span>
+                            <button type="button" class="btn btn-light like" data-id="<?php echo $row["postid"] ?>">
+                                <span class=""><i class="fa fa-thumbs-o-up"></i></span>
+                                <span class="likes_count"><?php echo $row["likes"] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-light unlike" data-id="<?php echo $row["postid"] ?>">
+                                <span class=""><i class="fa fa-thumbs-o-down"></i></span>
+                                <span class="unlikes_count"><?php echo $row["dislikes"] ?></span>
                             </button>
 
                         </div>
                         <div class="container">
                             <div class="replybutton btn4 like">
                                 <span class="btn reply" id="replyb">Reply</span>
-
                                 <div class="input-group" id="replyText" style="display: none">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-anchor"></i></span>
@@ -101,24 +114,24 @@ $result2 = $conn->query($sql2) or die($conn->error);
                                 </div>
                             </div>
                         </div>
-                    <?php 
-                    }  
+                    <?php
+                    }
                     ?>
                 </div>
             </div>
-                <div class="card" id="wrapper">
+            <div class="card" id="wrapper">
                 <?php
                 while ($row = $result2->fetch_assoc()) {
                 ?>
-                    <div class="card-header" >
+                    <div class="card-header">
                         <p class="card-text"><?php echo $row["reply"] ?></p>
                     </div>
-                    <?php 
-                        }
-                        $conn->close();
-                    ?>
-                    </div>
-            
+                <?php
+                }
+                $conn->close();
+                ?>
+            </div>
+
         </div>
         <div class="fixed-bottom">
             <div class="container">
@@ -141,46 +154,91 @@ $result2 = $conn->query($sql2) or die($conn->error);
         </div>
 </body>
 <script type="text/javascript">
-$(document).ready(function(){
-});
+    $(document).ready(function() {
+        // when the user clicks on like
+        $('.like').on('click', function() {
+            var postid = $(this).data('id');
 
-$('#replyb').click(function(){
-       $(this).next('#replyText').toggle();
-});
+            $post = $(this);
 
-$('#reply').keypress(function(event){
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if(keycode == '13'){
-        newPerson();
-    }
-});
+            $.ajax({
+                url: 'likePost.php',
+                type: 'post',
+                data: {
+                    'liked': 1,
+                    'postid': postid
+                },
+                success: function(response) {
+                    $post.parent().find('span.likes_count').text(response);
+                    $post.addClass('hide');
+                    $post.siblings().removeClass('hide');
+                }
+            });
+        });
 
-function newPerson() {
-    $('#wrapper').append('<div class="card"><div class="card-header"><p class="card-text" id="wrapper">'+$('#reply').val()+'</p></div></div>');
-    $.ajax({
-        url : "insertreplies.php",
-        type : "POST",
-        data : { postid:  getUrlParameter('postid'), reply2: $('#reply').val()},
-        dataType: "json"
+        // when the user clicks on unlike
+        $('.unlike').on('click', function() {
+            var postid = $(this).data('id');
+            $post = $(this);
+
+            $.ajax({
+                url: 'likePost.php',
+                type: 'post',
+                data: {
+                    'unliked': 1,
+                    'postid': postid
+                },
+                success: function(response) {
+                    $post.parent().find('span.unlikes_count').text(response);
+                    $post.addClass('hide');
+                    $post.siblings().removeClass('hide');
+                }
+            });
+        });
     });
-    $('#reply').val("");
-}
 
-function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+    $('#replyb').click(function() {
+        $(this).next('#replyText').toggle();
+    });
+
+    $('#reply').keypress(function(event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            newPerson();
         }
-    }
-};
+    });
 
+    function newPerson() {
+        $('#wrapper').append('<div class="card"><div class="card-header"><p class="card-text" id="wrapper">' + $('#reply')
+            .val() + '</p></div></div>');
+        $.ajax({
+            url: "insertreplies.php",
+            type: "POST",
+            data: {
+                postid: getUrlParameter('postid'),
+                reply2: $('#reply').val()
+            },
+            dataType: "json"
+        });
+        $('#reply').val("");
+    }
+
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
 </script>
 
 </html>

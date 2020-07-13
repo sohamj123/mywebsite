@@ -16,9 +16,7 @@
         .thumb {
             height: 240px;
             width: 260px;
-
         }
-
         .image-upload>input {
             display: none;
         }
@@ -28,7 +26,7 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="NBATAKES.html">home</a>
+            <a class="navbar-brand" href="NBATAKES.php">home</a>
         </nav>
         <div class="container">
             <h1 style="text-align: center;">Title</h1>
@@ -57,16 +55,15 @@
                     <div class="input-group input-group-lg">
                         <div class="input-group-prepend"></div>
                         <textarea type="text" rows="6" class="form-control" placeholder="caption" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-lg"></textarea>
+                            name="take" aria-describedby="inputGroup-sizing-lg"></textarea>
                     </div>
 
                 </div>
             </div>
-
-            <button type="button" class="btn btn-success btn-lg btn-block">Post</button>
-            <!--a href="post.html">
-                <button type="button" class="btn btn-success btn-lg btn-block">Post</button>
-            </a-->
+            <button type="submit"  class="btn btn-success btn-lg btn-block">Post</button>
+            <br>
+            <br>
+            <input type="hidden" id="picname" name="picname" value="">
         </form>
     </div>
 </body>
@@ -107,11 +104,15 @@
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var response = this.responseText;
+                    document.getElementById("picname").value = response;
+                    /*
                     if (response == 1) {
                         //alert("Upload successfully.");
                     } else {
                         alert("File not uploaded: " + response);
+
                     }
+                    */
                 }
             };
 

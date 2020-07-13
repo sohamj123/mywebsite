@@ -16,12 +16,11 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = sprintf('INSERT INTO post (title, take,picname, dt) VALUES ("%s", "%s", "%s", "%s")'
+$sql = sprintf('INSERT INTO post (title, take,dt) VALUES ("%s", "%s", "%s)'
           , $conn->real_escape_string($_POST["title"])
           , $conn->real_escape_string($_POST["take"]) 
-          , $conn->real_escape_string($_POST["picname"]) 
           , date("Y-m-d H:i:s") );
-
+          UPDATE `post` SET `isPost` = 1;
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully. " . date_default_timezone_get() ;
