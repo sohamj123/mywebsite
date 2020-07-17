@@ -67,6 +67,14 @@ $result = $conn->query($sql);
 $sql2 = sprintf('SELECT replyid, reply,likes,dislikes FROM replies where postid = %d;', $_GET['postid']);
 $result2 = $conn->query($sql2) or die($conn->error);
 
+$sql2 = sprintf('SELECT replyid, reply,likes,dislikes FROM replies where postid = %d;', $_GET['postid']);
+$result2 = $conn->query($sql2) or die($conn->error);
+
+
+$sql3 = sprintf('SELECT id,username FROM users where id = %d;', $_GET['id']);
+$result3 = $conn->query($sql3) or die($conn->error);
+
+
 #echo $sql;
 #echo $result->num_rows;
 ?>

@@ -37,19 +37,18 @@ $result = $conn->query($sql);
 ?>
 
 <body>
-
   <div class="container">
-    <div class="row">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="col-4">
-          <a class="navbar-brand" href="NBATAKES.php">home</a>
-        </div>
-        <span class="col-2"></span>
-        <div class="col-6">
-          <a href="sportsTakesHome.php" class="btn btn-danger">Sign Out</a>
-        </div>
-      </nav>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <a class="navbar-brand" href="sportsTakesHome.php">home</a>
+      <form class="form-inline">
+      <a href="logout.php" class="btn btn-success">Sign In</a>
+
+      </form>
+
+
+
+    </nav>
     <div class="container">
 
 
@@ -94,14 +93,14 @@ $result = $conn->query($sql);
           <div class="col">
             <div class="float-right">
               <div style="height: 90px;">
-                <a href="newPost.html" title="">
-                  <svg class="bi bi-plus-circle" width="80px" height="80px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                
+                  <svg class="bi bi-plus-circle" id="target" width="80px" height="80px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <title> New Post </title>
                     <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
                     <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                   </svg>
-                </a>
+                
               </div>
             </div>
           </div>
@@ -113,8 +112,8 @@ $result = $conn->query($sql);
   </div>
 </body>
 <script>
-
-
-</Script>
-
-</html>
+   $( "#target" ).click(function() {
+  alert( "You have to sign in to make a post" );
+});
+</script>
+</html> 

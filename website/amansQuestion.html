@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Stay Indoors</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="replybutton btn4 like">
+                            <div class="input-group" id="replyText" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-anchor"></i></span>
+                                </div>
+                                <input type="text" id="reply" class="form-control pull-right reply"
+                                    placeholder="Write a reply..." />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card" id="wrapper">
+
+            </div>
+
+</body>
+<script type="text/javascript">
+    // when the user clicks on unlike
+
+
+
+    $('#reply').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13' && $('#reply').val() > '') {
+
+            newPerson();
+        }
+    });
+
+    function newPerson() {
+        $('#wrapper').append('<div class="card"><div class="card-header"><p class="card-text" id="wrapper">' + $('#reply')
+            .val().length + '</p></div></div>');
+
+        $('#reply').val("");
+    }
+</script>
+
+</html>
