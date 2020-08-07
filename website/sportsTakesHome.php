@@ -30,7 +30,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = sprintf('SELECT postid, title, take, likes, dislikes,picname FROM post');
+$sql = sprintf('SELECT postid, take, likes, dislikes,picname,username FROM post');
 $result = $conn->query($sql);
 #echo $sql;
 #echo $result->num_rows;
@@ -42,7 +42,7 @@ $result = $conn->query($sql);
 
       <a class="navbar-brand" href="sportsTakesHome.php">home</a>
       <form class="form-inline">
-      <a href="logout.php" class="btn btn-success">Sign In</a>
+      <a href="login.php" class="btn btn-success">Sign In</a>
 
       </form>
 
@@ -54,12 +54,12 @@ $result = $conn->query($sql);
 
       <?php
       while ($row = $result->fetch_assoc()) {
-
+      
       ?>
         <?php echo sprintf('<a href="take.php?postid=%s" style="text-decoration: none;color: black;">', $row["postid"]) ?>
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title"><?php echo $row["title"] ?></h5>
+            <h5 class="card-title"><?php echo $row["username"] ?></h5>
 
             <?php
             if ($row['picname'] != NULL) {

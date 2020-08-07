@@ -31,7 +31,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = sprintf('SELECT postid, take, likes, dislikes,picname,username FROM post');
+$sql = sprintf('SELECT postid, take, likes, dislikes,picname,username FROM post where username = "%s";', $_SESSION["username"]);
 $result = $conn->query($sql);
 #echo $sql;
 #echo $result->num_rows;
@@ -52,7 +52,6 @@ $result = $conn->query($sql);
 
       <?php
       while ($row = $result->fetch_assoc()) {
-
       ?>
         <?php echo sprintf('<a href="take.php?postid=%s" style="text-decoration: none;color: black;">', $row["postid"]) ?>
         <div class="card">

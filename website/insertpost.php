@@ -15,12 +15,13 @@ date_default_timezone_set('America/New_York');
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+$username = $conn->real_escape_string($_SESSION["username"]);
 
-$sql = sprintf('INSERT INTO post (title, take,picname, dt) VALUES ("%s", "%s", "%s", "%s")'
-          , $conn->real_escape_string($_POST["title"])
+$sql = sprintf('INSERT INTO post (take,picname, dt,username) VALUES ("%s", "%s", "%s","%s")'
           , $conn->real_escape_string($_POST["take"]) 
           , $conn->real_escape_string($_POST["picname"]) 
-          , date("Y-m-d H:i:s") );
+          , date("Y-m-d H:i:s")
+          , $username);
 
 
 if ($conn->query($sql) === TRUE) {
