@@ -118,7 +118,7 @@ $result = $conn->query($sql);
             alert("you are logged out")
           }
         });
-      }
+      });
 </Script>
 
 </html>
