@@ -78,11 +78,11 @@ $result2 = $conn->query($sql2) or die($conn->error);
             <?php
             if (isset($_SESSION["loggedin"]) == "true") {
             ?>
-            <a class="navbar-brand" href="NBATAKES.php">home</a></nav>
+            <a class="navbar-brand" href="">home</a></nav>
             <?php
             } else {
             ?>
-            <a class="navbar-brand" href="sportsTakesHome.php">home</a></nav>
+            <a class="navbar-brand" href="NBATAKES.php">home</a></nav>
             <?php
             }
             ?>
