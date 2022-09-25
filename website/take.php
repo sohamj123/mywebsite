@@ -106,7 +106,6 @@ $result2 = $conn->query($sql2) or die($conn->error);
                     <?php
                     }
                     ?>
-<<<<<<< HEAD
                     <p class="card-text"><?php echo $row["take"] ?></p>
                     <div class="">
                         <button type="button" class="btn btn-light like" data-id="<?php echo $row["postid"] ?>">
@@ -120,14 +119,12 @@ $result2 = $conn->query($sql2) or die($conn->error);
 
                     </div>
                     <div class="container">
-=======
                     
                         <h5 class="card-title"><?php echo $row["title"] ?></h5>
                         <?php
                         if ($row['picname'] != NULL) {
                         ?>
                             <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;"/>
->>>>>>> parent of 9496f6c... new changes
                         <?php
                         if (isset($_SESSION["loggedin"]) == "true") {
                         ?>
