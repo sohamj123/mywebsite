@@ -102,7 +102,17 @@ $result2 = $conn->query($sql2) or die($conn->error);
                         <h5 class="card-title"><?php echo $row["title"] ?></h5>
                         <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;"/>
 
-                        
+                        <div class="">
+                            <button type="button" class="btn btn-light like" data-id="<?php echo $row["postid"] ?>">
+                                <span class=""><i class="fa fa-thumbs-o-up"></i></span>
+                                <span class="likes_count"><?php echo $row["likes"] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-light unlike" data-id="<?php echo $row["postid"] ?>">
+                                <span class=""><i class="fa fa-thumbs-o-down"></i></span>
+                                <span class="unlikes_count"><?php echo $row["dislikes"] ?></span>
+                            </button>
+
+                        </div>
                             <div class="replybutton btn4 like">
                                 <span class="btn reply" id="replyb">Reply</span>
                                 <div class="input-group" id="replyText" style="display: none">
