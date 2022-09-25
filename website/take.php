@@ -102,9 +102,7 @@ $result2 = $conn->query($sql2) or die($conn->error);
                         <h5 class="card-title"><?php echo $row["title"] ?></h5>
                         <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;"/>
 
-                        <?php
-                        if (isset($_SESSION["loggedin"]) == "true") {
-                        ?>
+                        
                             <div class="replybutton btn4 like">
                                 <span class="btn reply" id="replyb">Reply</span>
                                 <div class="input-group" id="replyText" style="display: none">
@@ -114,13 +112,7 @@ $result2 = $conn->query($sql2) or die($conn->error);
                                     <input type="text" id="reply" class="form-control pull-right reply" placeholder="Write a reply..." />
                                 </div>
                             </div>
-                        <?php
-                        } else {
-                        ?>
-                            <span class="btn reply">Reply</span>
-                        <?php
-                        }
-                        ?>
+                        
                     </div>
                 <?php
                 } }
