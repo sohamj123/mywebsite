@@ -17,11 +17,12 @@ if ($conn->connect_error) {
 }
 $username = $conn->real_escape_string($_SESSION["username"]);
 
-$sql = sprintf('INSERT INTO post (take,picname, dt,username) VALUES ("%s", "%s", "%s","%s")'
+$sql = sprintf('INSERT INTO post (take,picname, dt,username,title) VALUES ("%s", "%s", "%s","%s","%s")'
           , $conn->real_escape_string($_POST["take"]) 
           , $conn->real_escape_string($_POST["picname"]) 
           , date("Y-m-d H:i:s")
-          , $username);
+          , $username 
+          , $conn->real_escape_string($_POST["title"]));
 
 
 if ($conn->query($sql) === TRUE) {
