@@ -95,35 +95,14 @@ $result2 = $conn->query($sql2) or die($conn->error);
             <div class="card-body">
                 <?php
                 while ($row = $result->fetch_assoc()) {
-                    
                 ?>
 
                     <h5 class="card-title"><?php echo $row["username"] ?></h5>
                     <?php
                     if ($row['picname'] != NULL) {
                     ?>
-                        <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;" />
-                    <?php
-                    }
-                    ?>
-                    <p class="card-text"><?php echo $row["take"] ?></p>
-                    <div class="">
-                        <button type="button" class="btn btn-light like" data-id="<?php echo $row["postid"] ?>">
-                            <span class=""><i class="fa fa-thumbs-o-up"></i></span>
-                            <span class="likes_count"><?php echo $row["likes"] ?></span>
-                        </button>
-                        <button type="button" class="btn btn-light unlike" data-id="<?php echo $row["postid"] ?>">
-                            <span class=""><i class="fa fa-thumbs-o-down"></i></span>
-                            <span class="unlikes_count"><?php echo $row["dislikes"] ?></span>
-                        </button>
-
-                    </div>
-                    <div class="container">
                     
                         <h5 class="card-title"><?php echo $row["title"] ?></h5>
-                        <?php
-                        if ($row['picname'] != NULL) {
-                        ?>
                             <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;"/>
                         <?php
                         if (isset($_SESSION["loggedin"]) == "true") {
@@ -187,16 +166,17 @@ $result2 = $conn->query($sql2) or die($conn->error);
             } else {
             ?>
                 <div class="row">
-                    <div class="col">
-                        <div class="float-right">
-                            <div style="height: 90px;">
-                                    <svg class="bi bi-plus-circle" width="80px" height="80px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <title> New Post </title>
-                                        <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
-                                        <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
-                                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                    </svg>
-                            </div>
+                    <div class="col-9"></div>
+                    <div class="col-3">
+                        <div style="height: 90px;">
+                            <a href="newTake.html" title="">
+                                <svg class="bi bi-plus-circle" width="80px" height="80px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <title> New Take </title>
+                                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+                                    <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
