@@ -5,6 +5,9 @@ session_start();
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: NBATAKES.php");
+    $_SESSION["loggedin"] = true;
+    $_SESSION["id"] = 1;
+    $_SESSION["username"] = "Soham";
     exit;
 }
  
