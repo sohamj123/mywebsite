@@ -78,17 +78,14 @@ $result2 = $conn->query($sql2) or die($conn->error);
             <?php
             if (isset($_SESSION["loggedin"]) == "true") {
             ?>
-                <a class="navbar-brand" href="NBATAKES.php">home</a>
-                
-        </nav>
-    <?php
+            <a class="navbar-brand" href="NBATAKES.php">home</a></nav>
+            <?php
             } else {
-    ?>
-        <a class="navbar-brand" href="sportsTakesHome.php">home</a>
-        </nav>
-    <?php
+            ?>
+            <a class="navbar-brand" href="sportsTakesHome.php">home</a></nav>
+            <?php
             }
-    ?>
+            ?>
 
     <div class="container">
         <div class="card">
@@ -103,7 +100,8 @@ $result2 = $conn->query($sql2) or die($conn->error);
                     ?>
                     
                         <h5 class="card-title"><?php echo $row["title"] ?></h5>
-                            <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;"/>
+                        <img src="uploadedpic/<?php echo $row["picname"] ?>" style="height:100px;width=100px;"/>
+
                         <?php
                         if (isset($_SESSION["loggedin"]) == "true") {
                         ?>
@@ -125,7 +123,7 @@ $result2 = $conn->query($sql2) or die($conn->error);
                         ?>
                     </div>
                 <?php
-                }
+                } }
                 ?>
             </div>
         </div>
@@ -271,7 +269,7 @@ $result2 = $conn->query($sql2) or die($conn->error);
                 return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
             }
         }
-    };
+    }
 </script>
 
 </html>
