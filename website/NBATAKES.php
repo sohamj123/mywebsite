@@ -89,6 +89,7 @@ $result = $conn->query($sql);
       <div class="container">
         <div class="row">
           <div class="col-1">
+            <!--
             <div style="height: 90px;">
               <a href="newTake.html" title="">
                 <svg class="bi bi-plus-circle" width="80px" height="80px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -99,6 +100,7 @@ $result = $conn->query($sql);
                 </svg>
               </a>
             </div>
+            -->
           </div>
           <div class="col-10"></div>
           <div class="col-1">
