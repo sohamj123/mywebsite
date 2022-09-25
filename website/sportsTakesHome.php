@@ -42,7 +42,7 @@ $result = $conn->query($sql);
 
       <a class="navbar-brand" href="sportsTakesHome.php">home</a>
       <form class="form-inline">
-      <a href="login.php" class="btn btn-success">Sign In</a>
+      <a href="NBATAKES.php" class="btn btn-success">Sign In</a>
 
       </form>
 
